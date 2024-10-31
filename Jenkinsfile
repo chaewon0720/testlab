@@ -1,12 +1,3 @@
-# Dockerfile
-FROM nginx
-
-ADD index.html /usr/share/nginx/html/
-
-# index.html
-<h2>jenkins test</h2>
-
-# Jenkinsfile
 pipeline {
   agent any
   stages {
