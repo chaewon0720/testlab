@@ -26,7 +26,8 @@ pipeline {
     stage('deploy and service') {
       steps {
         sh '''
-        sudo kubectl apply -f 
+        ansible master -m shell -a "sudo kubectl create deploy purple --replicas=3 --port=80 --image=brian24/keduitlab:purple"
+        ansible master -m shell -a "sudo kubectl expose deploy purple --type=LoadBalancer --port=80 --target-port=80 --name=purple-svc"
         '''
       }
     }
